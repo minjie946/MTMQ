@@ -1,0 +1,111 @@
+/**
+ * @author minjie
+ * @createTime 2019/06/17
+ * @description 人员组织架构组件
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ */
+.cus-share-btn {
+  text-align right
+}
+.cus-share-organ-content {
+  margin-top 24px;
+  display: flex;
+  align-items: top;
+  position sticky;
+  top 0px;
+  .content-item {
+    min-width 180px
+    max-width 216px;
+    flex-direction:column;
+  }
+  .header {
+    height:48px;
+    font-size:11px;
+    line-height:48px;
+    padding-left 29px;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    background #F7F7F7;
+  }
+}
+.cus-share-organ-container {
+  height 450px;
+  overflow-x auto;
+  overflow-y auto;
+  margin-top 0px;
+}
+
+.item {
+  cursor pointer;
+  font-size:11px;
+  line-height:48px;
+  padding-left 29px;
+  height 48px;
+  min-width 180px
+  max-width 180px;
+  background:rgba(247,247,247,0.2);
+  box-shadow:0px 1px 0px 0px rgba(217,217,217,0.3);
+  font-size:11px;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  border-bottom 1px solid rgba(247,247,247,0.3);
+}
+.item-check {
+  margin-right 10px;
+}
+
+.active {
+  color:rgba(255,255,255,1);
+  background:rgba(0,122,255,1);
+  box-shadow:0px 1px 0px 0px rgba(217,217,217,0.3);
+}
+
+.cus-item-share {
+  display flex
+  align-content flex-start
+}
+.cus-item-col {
+  flex-direction column
+}
+.cus-item-row {
+  flex-direction row
+}
+
+/** input 框的显示 */
+.cus-organization-input {
+  display inline-block;
+  vertical-align middle;
+  box-sizing border-box
+  width:100%;
+  background:rgba(255,255,255,1);
+  border-radius:3px;
+  border:1px solid rgba(217,217,217,1);
+  font-size:11px;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  padding 0px 10px;
+  line-height: 29px !important;
+  .cus-input-placeholder {
+    cursor pointer
+    display inline-block;
+    color:rgba(0,122,255,1);
+    line-height:29px;
+  }
+}
+
+.cus-disabled {
+  background:rgba(232,237,243,1);
+  border:0px solid rgba(217,217,217,1);
+  .cus-input-placeholder {
+    color:rgba(102,102,102,1);
+  }
+}
+.cus-share-select-num {
+  font-size:11px;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,122,255,1);
+  line-height:16px;
+  margin-right 10px;
+}

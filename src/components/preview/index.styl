@@ -1,0 +1,131 @@
+/**
+ * @author minjie
+ * @createTime 2019/09/11  (hooks 测试写的)
+ * @description 图片预览 css
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ */
+
+$footer-height = 100px
+
+.preview-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 996;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width 100%;
+  height: 100%;
+  .preview-header {
+  }
+  .preview-content {
+  }
+  .preview-footer {
+    position: fixed;
+    bottom 40px;
+    left: 0;
+    z-index 997;
+    width 100%;
+    height $footer-height;
+    box-sizing border-box;
+    .preview-footer-content {
+      height 100%;
+      width 71%;
+      margin 0 auto;
+      position relative;
+      cursor pointer;
+      box-sizing border-box;
+      overflow hidden;
+      border-radius 6px;
+    }
+    /** 左右的按钮 start */
+    .footer-content-next,
+    .footer-content-prve {
+      background: rgba(0,0,0,0.9);
+      position absolute;
+      top 0;
+      z-index 998;
+      cursor pointer;
+      width 40px;
+      height $footer-height;
+      display none;
+      line-height 100%;
+      text-align center;
+      span {
+        dispaly block;
+        line-height $footer-height;
+        color rgb(255,255,255)
+        font-size 26px;
+      }
+    }
+    .footer-content-next {
+      right 0;
+      border-top-right-radius:6px;
+      border-bottom-right-radius:6px;
+    }
+    .footer-content-prve {
+      left 0;
+      border-top-left-radius:6px;
+      border-bottom-left-radius:6px;
+    }
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .preview-footer-content:hover .footer-content-next,
+    .preview-footer-content:hover .footer-content-prve {
+      display block;
+      animation: fadeInLeft 1s;
+    }
+    /** 左右的按钮 end */
+    /** 底部图片 start */
+    .footer-content-card {
+      height $footer-height
+      box-sizing border-box;
+      min-width: 1025px
+      .card {
+        width 12%;
+        height $footer-height
+        border-radius 6px;
+        position relative;
+        padding-right 20px;
+        float left;
+        > div,
+        > img {
+          display inline-block
+          width 180px;
+          height 100%;
+          border-radius 6px;
+          position absolute;
+        }
+        > div {
+          background: rgba(0,0,0,0.3);
+          z-index 6
+        }
+        @keyframes fadeInLeftfootimg {
+          from {
+            background: rgba(0,0,0,0.3);
+          }
+          to {
+            background: rgba(0,0,0,0);
+          }
+        }
+        > div:hover {
+          animation fadeInLeftfootimg 0.5s;
+          background: rgba(0,0,0,0);
+          border 1.5px solid #007AFF;
+        }
+        > img {
+          z-index 1
+        }
+      }
+    }
+    /** 底部图片 end */
+  }
+}

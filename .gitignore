@@ -1,0 +1,22 @@
+# 单个文件
+.DS_Store
+
+coverage
+
+npm-debug.log
+npm-debug.log.*
+thumbs.db
+!.gitkeep
+package-lock.json
+yarn-error.log
+yarn.lock
+
+# 文件夹
+test/
+node_modules/
+.idea/
+dist/*
+build/*
+!build/icons
+!build/plists
+.cache-loader

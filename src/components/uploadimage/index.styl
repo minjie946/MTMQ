@@ -1,0 +1,89 @@
+/**
+ * @description banner css
+ * @author minjie
+ * @createTime 2019/08/16
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ */
+.banner-upload-btn {
+  outline:none;
+}
+
+.banner-upload-content {
+  background:rgba(251,251,251,1);
+  border-radius:4px;
+  border:1px dashed rgba(217,217,217,1);
+  cursor pointer;
+  text-align center;
+  .banner-upload-drag-icon {
+    font-size 44px;
+    color: #007AFF;
+    margin-top 30px;
+  }
+  .banner-upload-text{
+    margin-top 24px;
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:20px;
+  }
+  .banner-upload-hint {
+    margin-top 6px;
+    height:17px;
+    font-size:12px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:17px;
+  }
+}
+.banner-upload-content:hover {
+  border 1px dashed #007AFF;
+}
+.banner-upload-img-content {
+  border-radius:4px;
+  text-align center
+  position relative
+  left 0
+  top 0
+  .banner-upload-img {
+    border-radius:4px;
+    cursor pointer;
+    position absolute
+    z-index 2
+    left 0
+    top 0
+  }
+  .banner-upload-img-one {
+    display none
+    position absolute
+    z-index 3
+    left 0
+    top 0
+    width 100%
+    cursor pointer;
+    padding-top 40px
+    .banner-upload-updated-img {
+      width 30px;
+      height 30px;
+      margin 0 auto
+    }
+    .banner-upload-p {
+      height:20px;
+      width 100%
+      text-align center
+      font-size:14px;
+      font-family:PingFangSC;
+      font-weight:400;
+      color:rgba(255,255,255,1);
+      line-height:20px;
+    }
+  }
+}
+
+.banner-upload-img-content:hover {
+  .banner-upload-img-one {
+    display block
+  }
+}

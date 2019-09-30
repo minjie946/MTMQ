@@ -1,0 +1,94 @@
+/**
+ * @author minjie
+ * @createTime 2019/05/14
+ * @description 登录界面(less)
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ */
+.login-content {
+  width: 100%;
+  height: 100%;
+  transition: background-image 1s ease-in-out;
+  background-size 100% 100%;
+  // background-size 1536px 864px;/*no*/
+  background-repeat no-repeat;
+  position relative
+  .login-card {
+    position absolute;
+    top: 31.85%
+    right 6.3%
+    width:388.8px
+    p {
+      margin-bottom 42px
+      img {
+        display block
+        margin 0 auto
+        width 308px
+        height 34px
+      }
+    }
+    .from-item {
+      width:388.8px
+      height:70px;
+      margin 0 auto 24px
+      .get-code,
+      input,
+      button {
+        height:56px;
+        font-size:16px;
+        font-family:PingFangSC-Regular;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        line-height:29px;
+      }
+      .ant-input-group-addon,
+      input {
+        color:#373D45;
+        padding 0 20px;
+        background:rgba(245,245,245,1);
+        border none
+        outline: none
+      }
+      input:hover,
+      input:focus {
+        border none
+        outline: none
+      }
+      .ant-input-suffix {
+        right 20px
+      }
+      .ant-input-affix-wrapper .ant-input:focus {
+          border: none;
+          box-shadow: none;
+      }
+      .ant-input-clear-icon {
+        font-size:20px;
+      }
+      .get-code {
+        display block;
+        width 120px;
+        height:36px;
+        line-height 36px;
+        color:rgba(0,122,255,1);
+        cursor pointer
+        text-align center
+      }
+      .has-error .ant-form-explain {
+        font-size:16px;
+        font-family:PingFangSC-Regular;
+        line-height:29px;
+        margin-top 4px;
+      }
+    }
+  }
+  .login-change {
+    height:29px;
+    font-size:16px;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:29px;
+    margin-top 16px;
+    cursor pointer
+  }
+}
+
