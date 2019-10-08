@@ -1,7 +1,10 @@
 /**
- * @author minjie
- * @createTime 2019/05/14
- * @description antd 的样式重置
+ * antd 主题的配置
+ * @authors minjie
+ * @date    2019/09/29
+ * @version 1.0.0 firstVersion
+ * @module theme
+ * @description 主题样式的配置更改
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 module.exports = {

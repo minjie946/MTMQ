@@ -1,7 +1,10 @@
 /**
- * @deprecated 测试环境运行
- * @author minjie
- * @createTime 2018/8/29
+ * node 运行开发环境
+ * @authors minjie
+ * @date    2019/09/29
+ * @version 1.0.0 firstVersion
+ * @module dev-run
+ * @description nodeJs 运行开发环境
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 'use strict'

@@ -1,3 +1,12 @@
+/**
+ * 工具
+ * @authors minjie
+ * @date    2019/09/29
+ * @version 1.0.0 firstVersion
+ * @module utils
+ * @description 对nodeJs path进行封装
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ */
 'use strict'
 
 const path = require('path')

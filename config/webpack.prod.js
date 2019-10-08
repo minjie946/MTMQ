@@ -1,7 +1,10 @@
 /**
- * @author minjie
- * @createTime   2019/05/14
- * @description  webpack 正式环境的配置
+ * 配置文件，基础的配置
+ * @authors minjie
+ * @date    2019/09/29
+ * @version 1.0.0 firstVersion
+ * @module prod
+ * @description webpack 生产环境的配置
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 'use strict'

@@ -1,10 +1,11 @@
 /**
  * 配置文件，基础的配置
  * @authors minjie
- * @date    2019-9-29
+ * @date    2019/09/29
  * @version 1.0.0 firstVersion
- * @module common
- * @description 公共的配置
+ * @module config
+ * @description webpack 手动的配置
+ * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 'use strict'
 const utils = require('./utils/index')
