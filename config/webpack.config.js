@@ -9,6 +9,7 @@
  */
 'use strict'
 const utils = require('./utils/index')
+const theme = require('./utils/theme.js')
 const packages = require('../package.json')
 const moment = require('moment')
 
@@ -26,6 +27,12 @@ module.exports = {
       build: JSON.stringify(moment(new Date()).format('YYYY.MM.DD HHmmss'))
     }
   },
+  module: {
+    lessOption: {
+      modifyVars: theme,
+      javascriptEnabled: true
+    }
+  },
   alias: {
     '@components': utils.resolveApp('src/components'),
     '@assets': utils.resolveApp('src/assets'),
@@ -34,7 +41,6 @@ module.exports = {
     '@pages': utils.resolveApp('src/containers/pages'),
     '@router': utils.resolveApp('src/router'),
     '@server': utils.resolveApp('src/server'),
-    '@mock': utils.resolveApp('src/mock'),
     '@typings': utils.resolveApp('typings')
   },
   devServer: '127.0.0.1',

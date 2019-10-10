@@ -6,7 +6,7 @@
  */
 
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
-import { SysUtil, globalEnum, LoggerUtil, JudgeUtil, ConfigUtil } from '@utils/index'
+import { SysUtil, globalEnum, JudgeUtil, ConfigUtil } from '@utils/index'
 import { createHashHistory } from 'history'
 import { ResponseStatusEnum, HttpsReaponseEnum, AxiosHeaderEnum, ProjectEnum } from './AxiosEnum'
 
@@ -157,7 +157,6 @@ export default class Axios {
             case ResponseStatusEnum.CODE_1002: reject(a); break // 访问太频繁了！
             case ResponseStatusEnum.CODE_4001: reject(a); break // 友情提示
             case ResponseStatusEnum.CODE_ZERO_1000: // token 失效
-              LoggerUtil.log('请求的界面', '退出好饭碗后台 token 失效')
               SysUtil.clearLocalStorageAsLoginOut()
               const history = createHashHistory()
               history.replace('/') // 跳转到登录的界面

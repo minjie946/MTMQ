@@ -7,7 +7,6 @@
 import * as React from 'react'
 import { message, Modal } from 'antd'
 import { HFWAxios, UserAxios } from '@components/axios/Axios'
-import ServerApi from '@server/ServerApi'
 import { SysUtil, globalEnum } from '@utils/index'
 
 export default class RootComponent<P = {}, S = {}> extends React.Component<P, S> {
@@ -17,7 +16,6 @@ export default class RootComponent<P = {}, S = {}> extends React.Component<P, S>
   isAuthenticated = isAuthenticated // 权限的判断
   axios = HFWAxios
   axiosu = UserAxios
-  api = ServerApi // api 的调用
 }
 
 /**

@@ -10,20 +10,13 @@ import { globalEnum, OssPathEnum } from './Enum'
 import SysUtil from './SysUtil'
 import AesUtil from './AesUtil'
 import FileUtil from './FileUtil'
-import DataBase from './DataBase'
 import ValidateUtil, { formItemCol } from './Validate'
-// 配置文件
 import ConfigUtil from './Config'
-// 日志发送
-import LoggerUtil from './Logger'
-
-import OSSUtil from './OSSUtil'
 
 import { encryptedString } from './RsaEncryption'
 
 export {
   ConfigUtil,
-  LoggerUtil,
   globalEnum,
   OssPathEnum,
   SysUtil,
@@ -31,9 +24,7 @@ export {
   JudgeUtil,
   ComUtil,
   FileUtil,
-  DataBase,
   ValidateUtil,
-  OSSUtil,
   formItemCol,
   encryptedString
 }

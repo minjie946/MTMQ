@@ -6,14 +6,14 @@
  */
 import * as React from 'react'
 import * as RenderDom from 'react-dom'
-import Root from '@router/Root'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import { configure } from 'mobx'
 import { Provider } from 'mobx-react'
-import store from './store/index'
 import '@assets/style/common.styl'
 import '../statics/jsencrypt.min'
+
+import Login from '@pages/login/Login'
 
 configure({ enforceActions: 'observed' })
 
@@ -25,9 +25,9 @@ let configProvider = {
 }
 
 RenderDom.render(
-  <Provider {...store}>
+  <Provider>
     <ConfigProvider {...configProvider} >
-      <Root/>
+      <Login/>
     </ConfigProvider>
   </Provider>,
   document.getElementById('app')

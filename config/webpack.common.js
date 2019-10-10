@@ -9,7 +9,6 @@
  */
 'use strict'
 const utils = require('./utils/index')
-const theme = require('./utils/theme.js')
 const config = require('./webpack.config.js')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -74,20 +73,12 @@ module.exports = function (webpackEnv) {
       }),
       new webpack.DefinePlugin(config.definePlugin),
       new HappyPack({
-        id: 'css',
-        loaders: ['css-loader', 'postcss-loader'],
-        threadPool: happyThreadPool
-      }),
-      new HappyPack({
         id: 'less',
         loaders: ['css-loader',
           'postcss-loader',
           {
             loader: 'less-loader',
-            options: {
-              modifyVars: theme,
-              javascriptEnabled: true
-            }
+            options: config.module.lessOption
           }
         ],
         threadPool: happyThreadPool
@@ -132,14 +123,7 @@ module.exports = function (webpackEnv) {
           }
         },
         {
-          test: /\.css$/,
-          use: [
-            isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'happypack/loader?id=css'
-          ]
-        },
-        {
-          test: /\.less$/,
+          test: /\.(css|less)$/,
           use: [
             isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
             'happypack/loader?id=less'
