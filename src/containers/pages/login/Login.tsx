@@ -24,7 +24,6 @@ export default class Login extends RootComponent<LoginProps, LoginState> {
   render () {
     return (
       <div className="login-content" >
-        sss
       </div>
     )
   }
