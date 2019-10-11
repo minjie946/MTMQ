@@ -1,12 +1,14 @@
 /**
- * @author minjie
- * @createTime 2010/03/18
+ * @authors minjie
+ * @date    2019/10/11
+ * @version 1.0.0 firstVersion
+ * @module root
  * @description 通用的组件，所有的继承, 将界面上需要用到的组件都放在了这，之后进行继承使用
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 import * as React from 'react'
 import { message, Modal } from 'antd'
-import { HFWAxios, UserAxios } from '@components/axios/Axios'
+import { HFWAxios, UserAxios } from '@components/axios/Instance'
 import { SysUtil, globalEnum } from '@utils/index'
 
 export default class RootComponent<P = {}, S = {}> extends React.Component<P, S> {

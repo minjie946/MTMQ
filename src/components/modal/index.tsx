@@ -1,19 +1,20 @@
 /**
- * @author minjie
- * @createTime 2019/04/07
- * @description 模态框
+ * @authors minjie
+ * @date    2019/10/11
+ * @version 1.0.0 firstVersion
+ * @module Modal
+ * @description 封装基础的模态弹窗
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 
 import * as React from 'react'
-import RootComponent from '@components/root/RootComponent'
+import RootComponent from '@components/root'
 import { Modal } from 'antd'
-import './BasicModal.styl'
+import './index.styl'
 
 interface BasicModalProps {
   title?: string | any
   onCancel?: Function
-  onOk?: Function
   visible: boolean
 }
 
@@ -27,22 +28,15 @@ export default class BasicModal extends RootComponent<BasicModalProps, BasicModa
 
   /* 模态框的 关闭 */
   handleCancel = () => {
-    const { onCancel, onOk } = this.props
-    if (onCancel) {
-      onCancel(0)
-    }
-    if (onOk) {
-      onOk(0)
-    }
+    const { onCancel } = this.props
+    if (onCancel) onCancel(0)
   }
 
   render () {
     const { children, title, visible } = this.props
     let ch:[] = children as any
     let lastIndex = 0
-    if (children) {
-      lastIndex = ch.length
-    }
+    if (children) lastIndex = ch.length
     return (
       <Modal
         title={(<p className="basic-modal-title">{title}</p>)}

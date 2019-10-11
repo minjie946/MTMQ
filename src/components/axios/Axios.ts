@@ -1,68 +1,75 @@
 /**
- * @author minjie
- * @createTime 2019/09/07
- * @description axios
+ * @authors minjie
+ * @date    2019/10/11
+ * @version 1.0.0 firstVersion
+ * @module axios
+ * @description axios 的请求
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
+'use strict'
+import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse, Method } from 'axios'
 
-import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
-import { SysUtil, globalEnum, JudgeUtil, ConfigUtil } from '@utils/index'
-import { createHashHistory } from 'history'
-import { ResponseStatusEnum, HttpsReaponseEnum, AxiosHeaderEnum, ProjectEnum } from './AxiosEnum'
+export { AxiosRequestConfig } from 'axios'
 
-interface URLObject {
-  path:string
-  type?: 'POST' | 'post' | 'GET' | 'get' | string
+export enum HttpsReaponseEnum {
+  /** 请求成功 */
+  CODE_SUCCESS = 200,
+  /** 1、语义有误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。 2、请求参数有误 */
+  CODE_PARAMS_ERROR = 400,
+  /** 当前请求需要用户验证 */
+  CODE_UNAUTHORIZED = 401,
+  /** 服务器已经理解请求，但是拒绝执行它 */
+  CODE_FORBIDDEN = 403,
+  /** 请求失败，请求所希望得到的资源未被在服务器上发现 */
+  CODE_NOT_FOUND = 404,
+  /** 请求行中指定的请求方法不能被用于请求相应的资源 */
+  CODE_METHOD_NOT_ALLOWED = 405,
+  /** 服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理 */
+  CODE_INTERNAL_SERVER_ERROE = 500,
+  /** 由于临时的服务器维护或者过载，服务器当前无法处理请求。 */
+  CODE_SERVICE_UNAVAILABLE = 503,
+  /** 作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。 */
+  CODE_GATEWAY_TIMEOUT = 504
 }
 
-/* response 返回值类型 */
-interface Response {
-  code: number
-  data: any
-  msg: Array<string>
-  [key: string]: any
+export interface URLInterface {
+  type?: Method
+  path: string
+  [key:string]: any
 }
 
-export default class Axios {
-  constructor (basePath: string, timeout: number = 0, headers: AxiosHeaderEnum, projectName?: string) {
-    if (projectName) this.projectName = projectName
-    this.instace = this.create(basePath, timeout, headers)
+export interface AxiosInterface {
+  /**
+   * 自定义的请求
+   * @param url     请求的地址
+   * @param params  请求参数(非必传)
+   * @param options 请求的配置(非必传)
+   */
+  request<T = any, R = AxiosResponse<T>>(url: URLInterface, params?: Object, options?: AxiosRequestConfig):Promise<R>
+  /**
+   * 发送多个请求
+   */
+  all<T>(values: (T | Promise<T>)[]): Promise<T[]>
+}
+
+export default class Axios implements AxiosInterface {
+  constructor (baseURL: string, timeout: number) {
+    this.baseURL = baseURL
+    this.timeout = timeout
+    this.instance = this.create()
   }
+  private instance: AxiosInstance
+  private baseURL: string
+  private timeout: number
+  private headers: any
 
-  private instace: AxiosInstance
-
-  private projectName: any = null
-
-  public axios:any = axios
-
-  /** 创建新的请求对象 */
-  private create = (basePath:string, timeout: number = 0, headers?:AxiosHeaderEnum):AxiosInstance => {
+  private create () {
     const axiosN = axios.create({
-      baseURL: basePath,
-      timeout: timeout
+      baseURL: this.baseURL,
+      timeout: this.timeout
     })
-    // 请求拦截
     axiosN.interceptors.request.use((config: any) => {
-      switch (headers) {
-        case AxiosHeaderEnum.HFW:
-          config.headers = {
-            token: SysUtil.getLocalStorage(globalEnum.token) || 'ss', // 存在token 则发送token
-            traceId: SysUtil.traceId() + '_' + (SysUtil.getLocalStorage(globalEnum.userID) || -1),
-            ...ConfigUtil.axiosHeaders
-          }
-          break
-        case AxiosHeaderEnum.USER:
-          config.headers = {
-            device: 'WebPage',
-            platform: 'web',
-            traceId: SysUtil.traceId() + '_' + (SysUtil.getLocalStorage(globalEnum.userID) || -1),
-            Authorization: SysUtil.getLocalStorage(globalEnum.token) || ''
-          }
-          break
-        default:
-          config.headers = {}
-          break
-      }
+      config.headers = this.headers
       return config
     })
     // 响应 拦截器
@@ -109,101 +116,19 @@ export default class Axios {
     return Promise.reject(err)
   }
 
-  /** 对URL 进行筛选过滤 */
-  private URlFilter = (url:string, projectName?: any, version: string = 'v1'):string => {
-    if (projectName) {
-      url = url.replace('{projectName}', projectName)
-    } else {
-      if (url.indexOf('{projectName}')) {
-        let project = SysUtil.getLocalStorage(globalEnum.project)
-        if (project) {
-          if (project.indexOf('物美') >= 0) {
-            url = url.replace('{projectName}', 'wm')
-          } else if (project.indexOf('盒马') >= 0) {
-            url = url.replace('{projectName}', 'hm')
-          } else {
-            url = url.replace('{projectName}', 'sj')
-          }
-        } else {
-          url = url.replace('{projectName}', 'sj')
-        }
-      }
-    }
-    if (url.indexOf('{version}')) url = url.replace('{version}', version)
-    return url
+  all<T> (values: (T | Promise<T>)[]): Promise<T[]> {
+    throw new Error('Method not implemented.')
   }
 
-  /** 对返回的结果进行处理 */
-  private resltData = (obj:any) => {
-    return new Promise((resolve, reject) => {
-      obj.then((res:any) => {
-        const { headers: { authorization }, config: { responseType }, data: { code, data, message, msg, token } } = res // 获取到token
-        if (authorization && !JudgeUtil.isEmpty(authorization)) {
-          SysUtil.setLocalStorage(globalEnum.token, authorization, 5)
-        }
-        if (token && !JudgeUtil.isEmpty(token)) {
-          SysUtil.setLocalStorage(globalEnum.token, token, 5)
-        }
-        // 根据不同的响应类型返回不同的
-        if (responseType && responseType === 'blob') {
-          resolve(res.data)
-        } else {
-          let a:Response = { code: code, msg: message || msg, data: data }
-          switch (code) {
-            case ResponseStatusEnum.CODE_200: resolve(a); break
-            case ResponseStatusEnum.CODE_400: reject(a); break // 操作失败
-            case ResponseStatusEnum.CODE_411: reject(a); break // 参数错误！
-            case ResponseStatusEnum.CODE_500: reject(a); break // 服务器错误
-            case ResponseStatusEnum.CODE_1002: reject(a); break // 访问太频繁了！
-            case ResponseStatusEnum.CODE_4001: reject(a); break // 友情提示
-            case ResponseStatusEnum.CODE_ZERO_1000: // token 失效
-              SysUtil.clearLocalStorageAsLoginOut()
-              const history = createHashHistory()
-              history.replace('/') // 跳转到登录的界面
-              break
-            default: reject(a); break
-          }
-        }
-      }).catch((err:any) => {
-        let a = { msg: err.message }
-        reject(a)
-      })
-    })
-  }
-
-  /**
-   * 发送请求 get post
-   */
-  request = (URL:URLObject, params?: any, config?: AxiosRequestConfig) => {
-    let { type, path } = URL
-    /** 权限判断 */
-    if (!JudgeUtil.isEmpty(SysUtil.getLocalStorage(globalEnum.token)) && SysUtil.isAuthExit()) {
-      SysUtil.clearLocalStorageAsLoginOut()
-      const history = createHashHistory()
-      history.replace('/') // 跳转到登录的界面
-    }
-    path = this.URlFilter(path, this.projectName) // Url 过滤筛选
-    let resAxios = null
+  request (url: URLInterface, params: Object, options: AxiosRequestConfig): Promise<any> {
+    const { type, path } = url
+    let axisoResponse:any
     switch (type) {
       case 'get':
       case 'GET':
-        resAxios = this.instace({ url: path, method: 'get', params: params, ...config }); break
-      default: resAxios = this.instace({ url: path, method: 'POST', data: params, ...config }); break
+        axisoResponse = this.instance({ url: path, method: 'GET', params, ...options }); break
+      default: axisoResponse = this.instance({ url: path, method: 'POST', data: params, ...options }); break
     }
-    return this.resltData(resAxios)
-  }
-
-  /** 对信息进行修改 */
-  all = (requestAry:Array<any>) => {
-    return new Promise((resolve, reject) => {
-      axios.all(requestAry).then((res:any) => {
-        resolve(res)
-      }).catch((err:any) => {
-        reject(err)
-      })
-    })
+    return axisoResponse
   }
 }
-
-export const HFWAxios = new Axios(ConfigUtil.axiosBasePath, ConfigUtil.axiosTimeout, AxiosHeaderEnum.HFW)
-export const UserAxios = new Axios(ConfigUtil.userSeverBasePath, ConfigUtil.axiosTimeout, AxiosHeaderEnum.USER, ProjectEnum.HFW)

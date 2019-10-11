@@ -1,5 +1,4 @@
 /**
- * node 运行开发环境
  * @authors minjie
  * @date    2019/09/29
  * @version 1.0.0 firstVersion

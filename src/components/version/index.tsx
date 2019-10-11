@@ -1,27 +1,20 @@
 /**
- * @author minjie
- * @createTime 2019/05/15
+ * @authors minjie
+ * @date    2019/10/11
+ * @version 1.0.0 firstVersion
+ * @module root
  * @description 版本的显示
  * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 import * as React from 'react'
-import { RootComponent } from '@components/index'
 import { ConfigUtil } from '@utils/index'
 import './index.styl'
 
-interface VersionProps {
-  color: 'cus-version-color' | 'cus-version-color-b' | 'cus-version-color-black'
+const Version = (color: 'cus-version-color' | 'cus-version-color-b' | 'cus-version-color-black') => {
+  let build = `${ConfigUtil.watermark} version: ${process.env.version}  build:${process.env.build}`
+  return (
+    <div className={`cus-version-content ${color}`}>{build}</div>
+  )
 }
 
-export default class Version extends RootComponent<VersionProps, any> {
-  constructor (props:VersionProps) {
-    super(props)
-  }
-  render () {
-    let color = this.props.color
-    let build = `${ConfigUtil.watermark} version: ${process.env.version}  build:${process.env.build}`
-    return (
-      <div className={`cus-version-content ${color}`}>{build}</div>
-    )
-  }
-}
+export default Version
