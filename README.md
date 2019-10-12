@@ -68,7 +68,7 @@ vscode| [下载工具](https://code.visualstudio.com)
  * @version 版本
  * @module  模块
  * @description 文件注释
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 ```

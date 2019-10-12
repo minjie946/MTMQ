@@ -2,7 +2,7 @@
  * @author minjie
  * @createTime 2019/07/06
  * @description 配置文件
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 interface ConfigInterface {

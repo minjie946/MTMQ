@@ -4,7 +4,7 @@
  * @version 1.0.0 firstVersion
  * @module Modal
  * @description 封装基础的模态弹窗
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 import * as React from 'react'

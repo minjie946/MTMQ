@@ -2,7 +2,7 @@
  * @description 所有的工具类的输出
  * @author minjie
  * @createTime 2019/04/12
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 import { JudgeUtil, ComUtil } from './ComUtil'

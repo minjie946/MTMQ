@@ -3,7 +3,7 @@
  * @author minjie
  * @class AesUtils
  * @createTime 2019/05/14
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 const md5 = require('js-md5')
 // const CryptoJS = require('crypto-js')

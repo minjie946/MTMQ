@@ -4,7 +4,7 @@
  * @version 1.0.0 firstVersion
  * @module components
  * @description 组件输出
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 /** 基础组件: (可以将一个信息放在里面的) */
@@ -17,6 +17,8 @@ import { UserAxios, HFWAxios } from './axios/Instance'
 import Version from './version'
 /** modal 的弹窗 */
 import BasicModal from './modal'
+/** 路由的 */
+import RouterMoudel, { RouterInterface, RouterMoudelProps, LoadableLoading } from './router'
 
 export {
   UserAxios,
@@ -24,5 +26,9 @@ export {
   RootComponent,
   Loading,
   Version,
-  BasicModal
+  BasicModal,
+  RouterMoudel,
+  RouterInterface,
+  RouterMoudelProps,
+  LoadableLoading
 }

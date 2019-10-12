@@ -5,12 +5,10 @@
  * @copyright minjie<15181482629@163.com>
  */
 import * as React from 'react'
-import { RootComponent } from '@components/index'
-import { Redirect, Link } from 'react-router-dom'
+import { RootComponent, RouterMoudelProps, RouterMoudel } from '@components/index'
+import { Link } from 'react-router-dom'
 
-import './login.styl'
-
-interface LoginProps {
+interface LoginProps extends RouterMoudelProps {
 }
 
 interface LoginState {
@@ -23,9 +21,13 @@ export default class Login extends RootComponent<LoginProps, LoginState> {
   }
 
   render () {
+    const { routes } = this.props
     return (
       <div className="login-content" >
-        <Link to="/home" replace>home</Link>
+        <Link to="/home/one">one</Link>
+        <br/>
+        <Link to="/home/two">two</Link>
+        <RouterMoudel {...this.props} routes={routes}/>
       </div>
     )
   }

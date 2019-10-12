@@ -2,7 +2,7 @@
  * @author minjie
  * @createTime 2019/03/22
  * @description typescipt 全局加载文件
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 import * as H from 'history'
 
@@ -18,10 +18,9 @@ declare interface RouteOption extends KeyValue {
 }
 
 declare interface BaseProps {
-  history: H.History
-  location: Location
-  match: RouteMatch
-  routes: Array<RouteOption> | undefined
+  history?: H.History
+  location?: Location
+  match?: RouteMatch
   staticContext?: StaticContext
   [key: string]: any
 }

@@ -5,7 +5,7 @@
  * @version 1.0.0 firstVersion
  * @module theme
  * @description 主题样式的配置更改
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 module.exports = {
   'primary-color': '#007AFF', // 全局主色

@@ -3,7 +3,7 @@
  * @class 公共的一些验证
  * @createTime 2019/06/14
  * @description from 表单的一些验证
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 import { JudgeUtil } from './ComUtil'
 

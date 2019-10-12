@@ -6,9 +6,6 @@
  */
 import * as React from 'react'
 import { RootComponent } from '@components/index'
-import { Redirect, Link } from 'react-router-dom'
-
-import './login.styl'
 
 interface LoginProps {
 }
@@ -25,7 +22,7 @@ export default class Login extends RootComponent<LoginProps, LoginState> {
   render () {
     return (
       <div className="login-content" >
-        <Link to="/home" replace>home</Link>
+        one
       </div>
     )
   }
