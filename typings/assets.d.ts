@@ -2,7 +2,7 @@
  * @author minjie
  * @createTime 2019/03/22
  * @description typescipt 资源文件的加载 ts
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 declare module '*.less' {

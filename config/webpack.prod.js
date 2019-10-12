@@ -5,7 +5,7 @@
  * @version 1.0.0 firstVersion
  * @module prod
  * @description webpack 生产环境的配置
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 'use strict'
 process.env.NODE_ENV = 'production'

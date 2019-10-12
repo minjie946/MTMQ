@@ -4,7 +4,7 @@
  * @version 1.0.0 firstVersion
  * @module dev-run
  * @description nodeJs 运行开发环境
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 'use strict'
 const express = require('express')

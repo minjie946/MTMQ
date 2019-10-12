@@ -4,7 +4,7 @@
  * @version 1.0.0 firstVersion
  * @module root
  * @description 通用的组件，所有的继承, 将界面上需要用到的组件都放在了这，之后进行继承使用
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 import * as React from 'react'
 import { message, Modal } from 'antd'

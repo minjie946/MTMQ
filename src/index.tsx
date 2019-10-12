@@ -2,7 +2,7 @@
  * @author minjie
  * @createTime 2019/09/27
  * @description react 主页
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 import * as React from 'react'
 import * as RenderDom from 'react-dom'
@@ -10,10 +10,9 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import { configure } from 'mobx'
 import { Provider } from 'mobx-react'
+import Root from '@router/index'
 import '@assets/style/common.styl'
 import '../statics/jsencrypt.min'
-
-import Login from '@pages/login/Login'
 
 configure({ enforceActions: 'observed' })
 
@@ -27,7 +26,7 @@ let configProvider = {
 RenderDom.render(
   <Provider>
     <ConfigProvider {...configProvider} >
-      <Login/>
+      <Root/>
     </ConfigProvider>
   </Provider>,
   document.getElementById('app')

@@ -2,7 +2,7 @@
  * @description  枚举类型 存在多个， 将一些必要的信息存储保存在 本地的名称
  * @author minjie
  * @createTime 2019/04/12
- * @copyright Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
+ * @copyright minjie<15181482629@163.com>
  */
 
 // 保存全局的信息
