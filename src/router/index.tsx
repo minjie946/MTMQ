@@ -9,8 +9,9 @@
 
 import * as React from 'react'
 import { HashRouter as Router, Switch } from 'react-router-dom'
-import { RouterMoudel, RouterMoudelProps } from '@components/index'
+import { RouterMoudel, SilderInterface } from '@components/index'
 import router from './moudle'
+import { SysUtil } from '@utils/index'
 
 export default class RootRouter extends React.Component {
   /** 自定义离开的提示信息 */
@@ -19,11 +20,15 @@ export default class RootRouter extends React.Component {
     callback(flag)
   }
 
+  onSilderData = (silderAry:Array<SilderInterface>) => {
+    SysUtil.setSessionStorage('silderAry', silderAry)
+  }
+
   render () {
     return (
       <Router hashType="noslash" getUserConfirmation={this.getUserConfirmation}>
         <Switch>
-          <RouterMoudel {...this.props} routes={router} />
+          <RouterMoudel onSilderData={this.onSilderData} {...this.props} routes={router} />
         </Switch>
       </Router>
     )

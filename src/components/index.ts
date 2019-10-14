@@ -13,16 +13,24 @@ import RootComponent from './root'
 import Loading from './loading'
 /** Axios 加载的 */
 import { UserAxios, HFWAxios } from './axios/Instance'
+import { URLInterface } from './axios/Axios'
 /** 版本显示当前的版本号和创建的时间 */
 import Version from './version'
 /** modal 的弹窗 */
 import BasicModal from './modal'
 /** 路由的 */
-import RouterMoudel, { RouterInterface, RouterMoudelProps, LoadableLoading } from './router'
+import RouterMoudel, { RouterInterface, RouterMoudelProps, LoadableLoading, initSilderAry, SilderInterface, BreadcrumbAryInteface } from './router'
+/** 404界面 */
+import ErrorPage from './404'
+/** antd 的表格进行了封装 */
+import TableItem from './table'
 
 export {
   UserAxios,
   HFWAxios,
+  URLInterface,
+  ErrorPage,
+  TableItem,
   RootComponent,
   Loading,
   Version,
@@ -30,5 +38,8 @@ export {
   RouterMoudel,
   RouterInterface,
   RouterMoudelProps,
-  LoadableLoading
+  LoadableLoading,
+  initSilderAry,
+  SilderInterface,
+  BreadcrumbAryInteface
 }

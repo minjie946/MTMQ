@@ -4,7 +4,6 @@
  * @lastEditors: huxianghe
  * @Date: 2019-04-05 14:05:14
  * @LastEditTime: 2019-05-06 11:10:56
- * @copyright: Copyright © 2019 Shanghai Yejia Digital Technology Co., Ltd. All rights reserved.
  */
 
 export class ComUtil {
@@ -21,7 +20,7 @@ export class ComUtil {
     }
   }
 
-  /* 深度对比两个对象是否相同 */
+  /** 深度对比两个对象是否相同 */
   static compareDeep (origin: any, target: any) {
     let p
     if (typeof origin === 'number' && typeof target === 'number' && isNaN(origin) && isNaN(target)) {

@@ -38,12 +38,8 @@ export default class SysUtil {
    * @param {*} obj 需要拷贝的对象
    */
   static deepCopyObj (obj:any) {
-    if (obj === null) {
-      return null
-    }
-    if (typeof obj !== 'object') {
-      return obj
-    }
+    if (obj === null) return null
+    if (typeof obj !== 'object') return obj
     let newobj:any = {}
     for (const key in obj) {
       newobj[key] = SysUtil.deepCopyObj(obj[key])

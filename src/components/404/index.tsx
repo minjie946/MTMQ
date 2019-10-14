@@ -1,19 +1,19 @@
 /**
  * @author minjie
- * @createTime 2019/05/23
- * @description 登录界面
+ * @createTime 2019/10/14
+ * @description 404
  * @copyright minjie<15181482629@163.com>
  */
 import * as React from 'react'
 import { RootComponent } from '@components/index'
 
-interface LoginProps {
+interface ErrorPageProps {
 }
 
-interface LoginState {
+interface ErrorPageState {
 }
 
-export default class Login extends RootComponent<LoginProps, LoginState> {
+export default class ErrorPage extends RootComponent<ErrorPageProps, ErrorPageState> {
   constructor (props:any) {
     super(props)
     this.state = {}
@@ -21,9 +21,7 @@ export default class Login extends RootComponent<LoginProps, LoginState> {
 
   render () {
     return (
-      <div className="login-content" >
-        one
-      </div>
+      <div>404</div>
     )
   }
 }
