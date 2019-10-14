@@ -1,0 +1,45 @@
+/**
+ * @author minjie
+ * @createTime 2019/10/14
+ * @description 主界面
+ * @copyright minjie<15181482629@163.com>
+ */
+
+#home-container {
+  height 100%
+  .header {
+    background-color rgba(5, 5, 5, 0.75)
+    height: 50px;
+    box-sizing border-box;
+    .logo {
+      width: 120px;
+      height: 31px;
+      line-height 50px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 8px 24px 0;
+    }
+  }
+  .ant-menu-inline {
+    border none;
+    .ant-menu-item:not(:last-child),
+    li {
+      width 200px
+      margin 0
+    }
+  }
+  .active-span {
+    cursor pointer
+  }
+  .breadcrumb {
+    height 30px;
+    padding 0 24px 0;
+    line-height 30px;
+    background-color: #fff;
+  }
+  .content {
+    padding 24px;
+    background-color: #fff;
+    background-clip: content-box;
+    height 100%;
+  }
+}

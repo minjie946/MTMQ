@@ -20,14 +20,28 @@ const router:Array<RouterInterface> = [
     title: '登录',
     path: '/',
     exact: true,
+    key: '0000',
+    index: 1,
     component: LoadableLoading(() => import(/* webpackChunkName: "home" */ /* webpackPrefetch: true */ '@pages/login/Login'))
   },
   {
     title: 'home',
     path: '/home',
     exact: false,
+    key: '0001',
+    index: 2,
     component: LoadableLoading(() => import(/* webpackChunkName: "home" */ /* webpackPrefetch: true */ '@pages/home')),
-    routes: [...modules]
+    routes: [
+      {
+        title: '基础的组件',
+        path: '/home/basic',
+        exact: true,
+        level: 1,
+        index: 1,
+        key: '00010001'
+      },
+      ...modules
+    ]
   }
 ]
 

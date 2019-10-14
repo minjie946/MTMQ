@@ -5,7 +5,7 @@
  * @copyright minjie<15181482629@163.com>
  */
 import * as React from 'react'
-import { RootComponent } from '@components/index'
+import { RootComponent, TableItem } from '@components/index'
 
 interface LoginProps {
 }
@@ -22,7 +22,7 @@ export default class Login extends RootComponent<LoginProps, LoginState> {
   render () {
     return (
       <div className="login-content" >
-        two
+        <TableItem/>
       </div>
     )
   }
