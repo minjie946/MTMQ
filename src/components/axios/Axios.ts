@@ -32,6 +32,11 @@ export enum HttpsReaponseEnum {
   CODE_GATEWAY_TIMEOUT = 504
 }
 
+/**
+ * url 的格式限制
+ * @description type?: Method
+  path: string
+ */
 export interface URLInterface {
   type?: Method
   path: string
@@ -62,6 +67,9 @@ export default class Axios implements AxiosInterface {
   private baseURL: string
   private timeout: number
   private headers: any
+
+  /** 原生的值 */
+  public axios: any = axios
 
   private create () {
     const axiosN = axios.create({
@@ -117,10 +125,16 @@ export default class Axios implements AxiosInterface {
   }
 
   all<T> (values: (T | Promise<T>)[]): Promise<T[]> {
-    throw new Error('Method not implemented.')
+    return new Promise((resolve:(value?:any) => void, reject: (reason?: any) => void) => {
+      axios.all(values).then((res:any) => {
+        resolve(res)
+      }).catch((err:any) => {
+        reject(err)
+      })
+    })
   }
 
-  request (url: URLInterface, params: Object, options: AxiosRequestConfig): Promise<any> {
+  request (url: URLInterface, params?: Object, options?: AxiosRequestConfig): Promise<any> {
     const { type, path } = url
     let axisoResponse:any
     switch (type) {
