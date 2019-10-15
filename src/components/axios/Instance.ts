@@ -68,7 +68,7 @@ class AxiosInstance extends Axios {
   /** 是否需要替换请求路径中的字段 */
   private URLReplace: URLProjectEnum| undefined
 
-  request (url: URLInterface, params: Object, options: AxiosRequestConfig = {}) {
+  request (url: URLInterface, params?: Object, options: AxiosRequestConfig = {}) {
     /** 权限判断 */
     if (!JudgeUtil.isEmpty(SysUtil.getLocalStorage(globalEnum.token)) && SysUtil.isAuthExit()) {
       SysUtil.clearLocalStorageAsLoginOut()
