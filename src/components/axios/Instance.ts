@@ -68,7 +68,7 @@ class AxiosInstance extends Axios {
   /** 是否需要替换请求路径中的字段 */
   private URLReplace: URLProjectEnum| undefined
 
-  request (url: URLInterface, params?: Object, options: AxiosRequestConfig = {}) {
+  request = (url: URLInterface, params?: Object, options: AxiosRequestConfig = {}) => {
     /** 权限判断 */
     if (!JudgeUtil.isEmpty(SysUtil.getLocalStorage(globalEnum.token)) && SysUtil.isAuthExit()) {
       SysUtil.clearLocalStorageAsLoginOut()
@@ -76,29 +76,25 @@ class AxiosInstance extends Axios {
       history.replace('/') // 跳转到登录的界面
     }
     url.path = this.URlFilter(url.path, this.URLReplace)
-    let headers:any
     switch (this.headerType) {
       case AxiosHeaderEnum.HFW:
-        headers = {
+        super.headers = {
           token: SysUtil.getLocalStorage(globalEnum.token) || 'ss', // 存在token 则发送token
           traceId: SysUtil.traceId() + '_' + (SysUtil.getLocalStorage(globalEnum.userID) || -1),
           ...ConfigUtil.axiosHeaders
         }
         break
       case AxiosHeaderEnum.USER:
-        headers = {
+        super.headers = {
           device: 'WebPage',
           platform: 'web',
           traceId: SysUtil.traceId() + '_' + (SysUtil.getLocalStorage(globalEnum.userID) || -1),
           Authorization: SysUtil.getLocalStorage(globalEnum.token) || ''
         }
         break
-      default: headers = {}; break
+      default: super.headers = {}; break
     }
-    options = Object.assign(options, {
-      headers
-    })
-    const responseAxiso = super.request(url, params, options)
+    const responseAxiso = super.request(url, params)
     return this.resltData(responseAxiso)
   }
 

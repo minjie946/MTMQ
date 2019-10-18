@@ -58,15 +58,16 @@ export interface AxiosInterface {
 }
 
 export default class Axios implements AxiosInterface {
-  constructor (baseURL: string, timeout: number) {
+  constructor (baseURL: string, timeout: number, headers?:any) {
     this.baseURL = baseURL
     this.timeout = timeout
+    this.headers = headers
     this.instance = this.create()
   }
   private instance: AxiosInstance
   private baseURL: string
   private timeout: number
-  private headers: any
+  public headers: any
 
   /** 原生的值 */
   public axios: any = axios
@@ -124,15 +125,7 @@ export default class Axios implements AxiosInterface {
     return Promise.reject(err)
   }
 
-  all<T> (values: (T | Promise<T>)[]): Promise<T[]> {
-    return new Promise((resolve:(value?:any) => void, reject: (reason?: any) => void) => {
-      axios.all(values).then((res:any) => {
-        resolve(res)
-      }).catch((err:any) => {
-        reject(err)
-      })
-    })
-  }
+  all = axios.all
 
   request (url: URLInterface, params?: Object, options?: AxiosRequestConfig): Promise<any> {
     const { type, path } = url

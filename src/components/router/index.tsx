@@ -9,7 +9,7 @@
 import * as React from 'react'
 import { Route, RouteProps } from 'react-router-dom'
 import Loadable from 'react-loadable'
-import { Loading, ErrorPage } from '@components/index'
+import { Loading } from '@components/index'
 import { SysUtil } from '@utils/index'
 import { BaseProps } from 'typings/global'
 
@@ -17,16 +17,16 @@ import { BaseProps } from 'typings/global'
  * 配置路由时的选项
  */
 export interface RouterInterface extends RouteProps {
+  /** 路由的key: 当前路由的key */
+  key: string
+  /** （侧边栏）侧边栏的顺序 */
+  index?: number
   /** 标题 */
   title?: string
   /** 父级路由：上一级路由的key, 没有则是最上级的路由，为页面跳转的页面 */
   parent?: string
-  /** 路由的key: 当前路由的key */
-  key: string
   /** (侧边栏)路由的层级：当前路由属于第几层级, 数字越小，层级越大 */
   level?: number
-  /** （侧边栏）侧边栏的顺序 */
-  index: number
   /** 当前的路由所指向的具体的界面 */
   component?: any
   /** 侧边栏的图标 */
@@ -40,7 +40,7 @@ export interface SilderInterface extends RouterInterface {
   children?: Array<SilderInterface>
 }
 
-export interface RouterMoudelProps extends BaseProps {
+export interface RouterMoudelProps {
   /** 需要跳转的路由数组 */
   routes: Array<RouterInterface>
   /** 权限的数组: 路由的key组成的数组 */
@@ -53,6 +53,8 @@ export interface RouterMoudelProps extends BaseProps {
   onSilderData?: (silderAry:Array<SilderInterface>) => void
   /** 获取到当前的路由的信息： 面包屑 */
   onBreadcrumb?: (breadcrumbAry:Array<BreadcrumbAryInteface>) => void
+  /** 跳转错误的界面 */
+  ErrorComponents?: any
 }
 
 export interface BreadcrumbAryInteface {
@@ -113,10 +115,10 @@ export default class RouterMoudel extends React.Component<RouterMoudelProps, any
   }
 
   render () {
-    const { routes } = this.props
+    const { routes, ErrorComponents } = this.props
     return (
       routes ? routes.map((route:RouterInterface, i: number) => (
-        <RouteWithSubRoutes key={i} route={route} onBreadcrumb={this.onBreadcrumb}/>
+        <RouteWithSubRoutes key={i} route={route} ErrorComponents={ErrorComponents} onBreadcrumb={this.onBreadcrumb}/>
       )) : null
     )
   }
@@ -126,13 +128,15 @@ export default class RouterMoudel extends React.Component<RouterMoudelProps, any
  * 单个的路由组件
  * @param param 路由配置的参数
  */
-function RouteWithSubRoutes ({ route, onBreadcrumb }:any) {
+function RouteWithSubRoutes ({ route, onBreadcrumb, ErrorComponents }:any) {
   return (<Route path={route.path} exact={route.exact} render={props => {
     if (onBreadcrumb) onBreadcrumb(props)
     if (route.component) {
       return <route.component {...props} routes={route.routes} />
+    } else if (ErrorComponents) {
+      return <ErrorComponents/>
     } else {
-      return <ErrorPage/>
+      return null
     }
   }}/>)
 }
@@ -210,9 +214,13 @@ export function initSilderAry (data: Array<RouterInterface>, level: number = 2, 
           ary.push(el)
         }
         el['children'] = recursion(objKeys, obj, level, el.key, num + 1).sort((a:SilderInterface, b:SilderInterface) => {
-          if (a.index > b.index) return 1
-          else if (a.index < b.index) return -1
-          else return 0
+          if (a.index && b.index) {
+            if (a.index > b.index) return 1
+            else if (a.index < b.index) return -1
+            else return 0
+          } else {
+            return 0
+          }
         })
       })
     }
